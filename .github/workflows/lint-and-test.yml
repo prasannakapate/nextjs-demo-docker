@@ -33,3 +33,6 @@ jobs:
 
       - name: Run TypeScript Type Check
         run: npx tsc --noEmit
+
+      - name: Run Unit Tests
+        run: npm test -- --run
