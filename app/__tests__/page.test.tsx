@@ -5,7 +5,7 @@ import Home from '../page';
 // Mock Next.js Image component
 vi.mock('next/image', () => ({
   __esModule: true,
-  default: (props: any) => {
+  default: (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
     // eslint-disable-next-line jsx-a11y/alt-text
     return <img {...props} />;
   },
