@@ -25,9 +25,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable}`}
+      style={{ height: "100%" }}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body
+        style={{ minHeight: "100%", display: "flex", flexDirection: "column" }}
+        suppressHydrationWarning
+      >
+        {children}
+      </body>
     </html>
   );
 }
