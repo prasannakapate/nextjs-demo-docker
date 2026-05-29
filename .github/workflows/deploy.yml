@@ -34,9 +34,15 @@ jobs:
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Log into Azure using the secure JSON secret
+      - name: Log in to Azure
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Step 2: Deploy the container to the Web App
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'nextjs-docker' # Replace with your exact Azure Web App name
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          app-name: 'nextjs-docker'  # Your exact Web App name
           images: '${{ secrets.DOCKERHUB_USERNAME }}/nextjs-demo-docker:latest'
